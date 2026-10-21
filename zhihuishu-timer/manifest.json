@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "智慧树每日学习计时器",
+  "version": "1.3.0",
+  "description": "统计智慧树 (zhihuishu.com) 每日视频学习时长：仅视频播放时计时，达到目标(默认26分钟)自动暂停视频并语音播报(仅macOS)；视频弹出题目时系统通知做题；视频播完未达标时通知提醒手动跳转；每天首次启动浏览器时提醒今日学习进度。支持 Chrome/Edge，Windows/macOS。",
+  "permissions": ["storage", "notifications", "tabs", "scripting"],
+  "host_permissions": ["*://*.zhihuishu.com/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.zhihuishu.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle",
+      "all_frames": true
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "智慧树学习计时"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

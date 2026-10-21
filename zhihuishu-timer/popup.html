@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <style>
+    body {
+      width: 300px;
+      margin: 0;
+      padding: 16px;
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #f8fafc;
+      color: #0f172a;
+    }
+    h1 {
+      font-size: 15px;
+      margin: 0 0 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    #big {
+      font-size: 32px;
+      font-weight: 700;
+      text-align: center;
+      margin: 4px 0 10px;
+    }
+    .bar {
+      height: 10px;
+      border-radius: 5px;
+      background: #e2e8f0;
+      overflow: hidden;
+    }
+    #fill {
+      height: 100%;
+      width: 0;
+      border-radius: 5px;
+      background: linear-gradient(90deg, #22c55e, #16a34a);
+      transition: width 0.4s ease;
+    }
+    #sub {
+      font-size: 12px;
+      color: #475569;
+      text-align: center;
+      margin: 8px 0 14px;
+    }
+    label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 13px;
+      margin-bottom: 12px;
+    }
+    input {
+      padding: 5px 8px;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      font-size: 13px;
+    }
+    input[type='number'] { width: 70px; }
+    input[type='text'] { width: 130px; }
+    input[type='checkbox'] { width: auto; padding: 0; }
+    label.check { justify-content: flex-start; gap: 8px; }
+    button {
+      width: 100%;
+      padding: 8px 0;
+      border: none;
+      border-radius: 8px;
+      background: #16a34a;
+      color: #fff;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    button:hover { background: #15803d; }
+    button.secondary {
+      background: #fff;
+      color: #16a34a;
+      border: 1px solid #16a34a;
+      margin-top: 8px;
+    }
+    button.secondary:hover { background: #f0fdf4; }
+    .tip {
+      font-size: 11px;
+      color: #94a3b8;
+      line-height: 1.6;
+      margin: 12px 0 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>智慧树学习计时</h1>
+  <div id="big">--</div>
+  <div class="bar"><div id="fill"></div></div>
+  <div id="sub">加载中…</div>
+  <label>
+    每日目标（分钟）
+    <input id="limit" type="number" min="1" max="600" step="1" />
+  </label>
+  <label>
+    快捷指令名称
+    <input id="shortcut" type="text" placeholder="智慧树语音提醒" />
+  </label>
+  <label class="check">
+    <input id="quizNotify" type="checkbox" checked />
+    弹出题目时系统通知我做题
+  </label>
+  <button id="reset">重置今日计时（测试用）</button>
+  <button id="testVoice" class="secondary">测试语音提醒</button>
+  <p class="tip">
+    仅在智慧树视频播放时计时；达到目标后自动暂停并锁定视频，并触发 Mac「快捷指令」语音播报（需在快捷指令 App 中创建同名指令，名称留空则停用语音）；视频弹出题目时发系统通知（点击通知可跳回页面）；每日 0 点自动清零；浏览器启动时提醒今日进度。
+  </p>
+  <script src="popup.js"></script>
+</body>
+</html>
